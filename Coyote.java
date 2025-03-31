@@ -10,16 +10,34 @@ public class Coyote extends Critter
 	public Coyote()
 	{
 		setColor(null);
-		ArrayList<int> directions = new ArrayList<int>();
+		ArrayList<Integer> directions = new ArrayList<Integer>();
 		for (int i = 0; i < 8; i++)
 		{
 			directions.add( i * 45 );
 		}
-		setDirection(directions[(int)(Math.random() * directions.size())]);
+		setDirection(directions.get((int)(Math.random() * directions.size())));
 	}
 	
-	public void makeMove()
+	public void processActors(ArrayList<Actor> actors)
 	{
-		
+		return;
+	}
+	public ArrayList<Location> getMoveLocations()
+	{
+		ArrayList<Location> moveLocations = new ArrayList<Location>();
+		if ( getGrid().isValid(getLocation().getAdjacentLocation(getDirection()) )
+		{
+			moveLocations.add(getLocation().getAdjacentLocation(getDirection()));
+		}
+		return moveLocations;
+	}
+	public void makeMove(Location loc)
+	{
+		//if blocked in front
+		if ( loc.equals(getLocation()) )
+		{
+		}
+		if ( getGrid().isValid(loc) );
+			moveTo(loc);
 	}
 }
